@@ -1,0 +1,23 @@
+<h2>Hall Of Fame</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Position</th>
+      <th>Name</th>
+      <th>Number of Attempts</th>
+      <th>Play Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of hallOfFame, let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{item.Name}}</td>
+      <td>{{item.NumberOfAttempts}}  </td>
+      <td>{{item.PlayTime}}</td>
+    </tr>
+    <div class="alert alert-danger" role="alert" *ngIf="message">
+        {{message}} 
+    </div>
+  </tbody> 
+</table>

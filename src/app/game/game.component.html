@@ -1,0 +1,31 @@
+<h2>Play Game</h2>
+<a class="btn btn-primary btn-lg" role="button" *ngIf="attempt > 0" (click)="retry()">Retry</a>
+
+<div class="form-inline">
+    <h3 *ngIf="attempt > 0">Guess {{attempt}}</h3>
+    <input class="form-control" min="1" max="99" type="number" #ctrl="ngModel" [(ngModel)]="trialNumber">
+    <button [ngClass]="{'disabled':!trialNumber || !ctrl.valid || trialNumber <= 0 || trialNumber >= 100}" class="btn btn-primary" type="submit" (click)="try()">Submit</button>
+
+    <div class="alert alert-success" role="alert" *ngIf="correctMessage">
+        {{correctMessage}} 
+    </div>
+        
+    <form *ngIf="showForm" class="form-inline" [formGroup]="form">          
+        <div class="alert alert-success" role="alert" *ngIf="addSuccessMessage">
+            {{addSuccessMessage}} 
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Name" formControlName="name">
+        </div>
+        <button type="submit" [ngClass]="{'disabled':form.invalid}" class="btn btn-primary" (click)="submitForm()">Submit</button>
+    </form>
+    <div class="alert alert-danger" role="alert" *ngIf="message">
+        {{message}} 
+    </div>
+
+    <h3 *ngIf="attempt > 0">Guess History</h3>
+    <ul class="list-group">
+        <li *ngFor="let item of messageList, let i = index" class="list-group-item">{{i+1}}. {{item}}</li>
+    </ul>
+</div>
