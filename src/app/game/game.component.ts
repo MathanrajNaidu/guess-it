@@ -26,7 +26,6 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.guessNumber = Math.floor((Math.random() * 99) + 1);
-    console.log(this.guessNumber);
     this.initForm();
   }
 
@@ -85,7 +84,6 @@ export class GameComponent implements OnInit {
       PlayTime: new Date().toISOString()      
     }
     let sub = this.lookupService.postOnHallOfFame(body).subscribe((resp)=>{
-      console.log(resp);
       if(!resp|| resp.Name === null) {
         alert('Error saving. Please try again');
       } else {
