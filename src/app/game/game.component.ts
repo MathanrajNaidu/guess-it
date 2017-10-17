@@ -63,8 +63,8 @@ export class GameComponent implements OnInit {
       if(!resp || resp.length < 20 ) {
         this.showForm = true;
       }
-      debugger;
-      if(resp[19] && resp[19].NumberOfAttempts > this.trialNumber) {
+
+      if(resp[19] && resp[19].NumberOfAttempts > this.attempt) {
         this.showForm = true;
       }
 
